@@ -1,25 +1,21 @@
 package ai.cyberpolis.platform.entity;
 
-import jakarta.persistence.*;
+
 import lombok.*;
-import org.hibernate.Hibernate;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
-@Table
-@Entity
+@Data
+@Document(collection = "Topic")
 public class Topic {
     @Id
-    @SequenceGenerator(name = "topicId", sequenceName = "topicId")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "topicId")
     public int topicId;
 
     public int topicName;
-
 }

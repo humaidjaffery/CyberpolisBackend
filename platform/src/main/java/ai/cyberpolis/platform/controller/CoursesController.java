@@ -3,10 +3,7 @@ package ai.cyberpolis.platform.controller;
 import ai.cyberpolis.platform.entity.Course;
 import ai.cyberpolis.platform.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,8 +25,13 @@ public class CoursesController {
     }
 
     @GetMapping("/courses/{name}")
-    public Course getCourse(@PathVariable String name){
+    public Course getCourse(@PathVariable String name) throws Exception {
         return courseService.getCourseService(name);
+    }
+
+    @PostMapping("/addCourse/<courseName>")
+    public Course addCourse(@PathVariable String courseName){
+        return courseService.addCourseService(courseName);
     }
 
 }

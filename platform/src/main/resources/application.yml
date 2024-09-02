@@ -1,17 +1,8 @@
 spring:
-  datasource:
-#    driverClassName: org.postgresql.Driver
-    username: postgres
-    url: jdbc:postgresql://localhost:5432/cyberpolis
-    password: billybobjoe2152
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: 'true'
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  data:
+    mongodb:
+      uri: mongodb+srv://humaidjaffery:Billybobjoe2152%40@cyberpolis.bzc0s.mongodb.net/cyberpolis
+      database: cyberpolis
   app:
     jwtSecret: testSecretKeymyverylongkyemyverylongkeymyvery
     jwtExpirationMs: 60480000
