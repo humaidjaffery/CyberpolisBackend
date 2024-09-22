@@ -7,30 +7,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @CrossOrigin
+@RestController
+@RequestMapping("/course")
 public class CoursesController {
 
     @Autowired
     CourseService courseService;
 
-    @GetMapping("/hello")
-    public String getHello(){
-        return "hello";
-    }
-
-    @GetMapping("/courses")
+    @GetMapping("/getAll")
     public List<Course> getCourses(){
         return courseService.getCoursesService();
     }
 
-    @GetMapping("/courses/{name}")
+    @GetMapping("/get/{name}")
     public Course getCourse(@PathVariable String name) throws Exception {
         return courseService.getCourseService(name);
     }
 
-    @PostMapping("/addCourse/<courseName>")
-    public Course addCourse(@PathVariable String courseName){
+    @PostMapping("/add")
+    public Course addCourse(@RequestBody String courseName){
         return courseService.addCourseService(courseName);
     }
 

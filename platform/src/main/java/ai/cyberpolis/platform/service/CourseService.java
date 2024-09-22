@@ -7,19 +7,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CourseService {
 
     @Autowired
-    CourseRepository courseRepository;
+    private CourseRepository courseRepository;
 
     public List<Course> getCoursesService(){
         return courseRepository.findAll();
     }
 
-    public Course getCourseService(String name) throws Exception {
-        Optional<Course> c = courseRepository.findById(name);
+    public Course getCourseService(String courseId) throws Exception {
+        Optional<Course> c = courseRepository.findById(courseId);
         if(c.isPresent()){
             return c.get();
         } else {
@@ -28,8 +29,9 @@ public class CourseService {
     }
 
     public Course addCourseService(String name){
-        Course course = new Course(name);
-        return courseRepository.insert(course);
+        String courseId = UUID.randomUUID().toString().substring(0, 4);
+        Course course = new Course(courseId, name);
+        return courseRepository.save(course);
     }
 
 }

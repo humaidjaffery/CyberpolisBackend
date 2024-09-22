@@ -72,6 +72,6 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return new ResponseEntity<>(jwtService.generateJwtTokenFromEmail(userDetails), HttpStatus.OK) ;
+        return ResponseEntity.ok(jwtService.generateJwtTokenFromEmail(userDetails)) ;
     }
 }
