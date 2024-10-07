@@ -2,13 +2,11 @@ package ai.cyberpolis.platform.entity;
 
 
 import lombok.*;
-import org.bson.types.ObjectId;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Objects;
-import java.util.UUID;
+import java.util.List;
+import java.util.Map;
 
 
 @Getter
@@ -24,13 +22,15 @@ public class Module {
 
     public String moduleName;
 
-    public String moduleContentMarkdown;
+    public String moduleContent;
 
-    public String initialModuleCode;
+    public List<String> initialModuleCode;
+
+    public List<String> imports;
 
     public String moduleCodeSolution;
 
-    public String[] moduleTests;
+    public List<List<Object>> moduleTests;
 
 //    public byte[] backgroundImage;
 }

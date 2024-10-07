@@ -17,8 +17,12 @@ import java.util.UUID;
 @CrossOrigin
 @RequestMapping("/module")
 public class ModuleController {
-    @Autowired
-    private ModuleService moduleService;
+
+    private final ModuleService moduleService;
+
+    public ModuleController(ModuleService moduleService) {
+        this.moduleService = moduleService;
+    }
 
 
     @PostMapping("/add/{courseId}")

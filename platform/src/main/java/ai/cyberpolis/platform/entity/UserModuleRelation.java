@@ -5,6 +5,7 @@ import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -15,7 +16,7 @@ public class UserModuleRelation {
 
     public String moduleId;
 
-    public String moduleUserCode;
+    public List<String> moduleUserCode;
 
     public Boolean[] testsPassed;
 

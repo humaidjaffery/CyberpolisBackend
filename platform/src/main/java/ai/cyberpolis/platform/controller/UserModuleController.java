@@ -2,15 +2,14 @@ package ai.cyberpolis.platform.controller;
 
 import ai.cyberpolis.platform.entity.User;
 import ai.cyberpolis.platform.entity.UserModuleRelation;
+import ai.cyberpolis.platform.model.TestCodeResponse;
 import ai.cyberpolis.platform.service.UserModuleService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -26,7 +25,7 @@ public class UserModuleController {
     }
 
     @GetMapping("/get/{moduleId}")
-    public ResponseEntity getUserModuleRelation(@PathVariable String moduleId) throws Exception {
+    public ResponseEntity<UserModuleRelation> getUserModuleRelation(@PathVariable String moduleId) throws Exception {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok().body(userModuleService.getUserModuleRelation(user.getEmail(), moduleId));
     }
@@ -35,5 +34,11 @@ public class UserModuleController {
     public UserModuleRelation addUserModuleRelation(@RequestBody String moduleId) throws Exception {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userModuleService.addUserModuleRelation(user.getEmail(), moduleId);
+    }
+
+    @PostMapping("/runCode/{moduleId}")
+    public String testCode(@PathVariable String moduleId, @RequestBody List<String> code) throws Exception {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userModuleService.testCode(user.getEmail(), moduleId, code);
     }
 }
