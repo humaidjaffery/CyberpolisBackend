@@ -38,12 +38,20 @@ public class UserModuleService {
         Boolean[] testsPassed = new Boolean[module.getModuleTests().size()];
         Arrays.fill(testsPassed, false);
 
+        Boolean[] questionsCorrect = new Boolean[module.getQuestions().size()];
+        Arrays.fill(questionsCorrect, false);
+
+        String id = userEmail + moduleId;
+
         UserModuleRelation userModuleRelation = new UserModuleRelation(
+                id,
                 userEmail,
                 module.getId(),
                 module.getInitialModuleCode(),
                 testsPassed,
-                false
+                false,
+                new ArrayList<>(),
+                questionsCorrect
         );
 
         return userModuleRepository.save(userModuleRelation);
@@ -62,9 +70,6 @@ public class UserModuleService {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonArguments = objectMapper.writeValueAsString(arguments);
-
-        System.out.println(jsonArguments);
-
 
         //Create Isolated Docker environment for security, copy "userCode.py" and "codeTest.py" into
         //this docker container and only run codeTest.py with arguments
@@ -104,6 +109,18 @@ public class UserModuleService {
                 stderr.toString()
         );
         return stdout.toString();
+    }
+
+
+    public Boolean[] updateCorrectQuestion(Boolean[] correctQuestions, String userEmail, String moduleId) throws Exception {
+        UserModuleRelation userModuleRelation = getUserModuleRelation(userEmail, moduleId);
+
+        if(correctQuestions.length != userModuleRelation.getQuestionsCorrect().length){
+            throw new Exception("Format Error. Number Of questions do not align");
+        }
+
+        userModuleRelation.setQuestionsCorrect(correctQuestions);
+        return userModuleRepository.save(userModuleRelation).getQuestionsCorrect();
     }
 
 }

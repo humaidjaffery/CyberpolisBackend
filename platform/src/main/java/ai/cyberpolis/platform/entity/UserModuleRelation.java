@@ -2,24 +2,25 @@ package ai.cyberpolis.platform.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.bson.types.ObjectId;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "user_module")
 public class UserModuleRelation {
-    public String userEmail;
-
-    public String moduleId;
-
-    public List<String> moduleUserCode;
-
-    public Boolean[] testsPassed;
-
-    public Boolean completed;
-
+    @Id
+    private String id;
+    private String userEmail;
+    private String moduleId;
+    private List<String> moduleUserCode;
+    private Boolean[] testsPassed;
+    private Boolean completed;
+    private List<UserChatMessage> messageHistory = new ArrayList<>();
+    private Boolean[] questionsCorrect;
 }

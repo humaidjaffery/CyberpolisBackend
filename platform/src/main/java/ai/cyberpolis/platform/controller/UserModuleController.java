@@ -25,13 +25,13 @@ public class UserModuleController {
     }
 
     @GetMapping("/get/{moduleId}")
-    public ResponseEntity<UserModuleRelation> getUserModuleRelation(@PathVariable String moduleId) throws Exception {
+    public UserModuleRelation getUserModuleRelation(@PathVariable String moduleId) throws Exception {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return ResponseEntity.ok().body(userModuleService.getUserModuleRelation(user.getEmail(), moduleId));
+        return userModuleService.getUserModuleRelation(user.getEmail(), moduleId);
     }
 
-    @PostMapping("/add")
-    public UserModuleRelation addUserModuleRelation(@RequestBody String moduleId) throws Exception {
+    @PostMapping("/add/{moduleId}")
+    public UserModuleRelation addUserModuleRelation(@PathVariable String moduleId) throws Exception {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userModuleService.addUserModuleRelation(user.getEmail(), moduleId);
     }
@@ -40,5 +40,11 @@ public class UserModuleController {
     public String testCode(@PathVariable String moduleId, @RequestBody List<String> code) throws Exception {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userModuleService.testCode(user.getEmail(), moduleId, code);
+    }
+
+    @PutMapping("/update/correctQuestion/{moduleId}")
+    public Boolean[] updatecorrectQuestion(@RequestBody Boolean[] questions, @PathVariable String moduleId) throws Exception {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userModuleService.updateCorrectQuestion(questions, user.getEmail(), moduleId);
     }
 }

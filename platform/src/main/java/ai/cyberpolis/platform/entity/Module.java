@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,9 @@ public class Module {
 
     public String moduleName;
 
-    public String moduleContent;
+    public List<Object> moduleContent;
+
+    public List<String> initialModuleHiddenCode;
 
     public List<String> initialModuleCode;
 
@@ -32,5 +35,11 @@ public class Module {
 
     public List<List<Object>> moduleTests;
 
-//    public byte[] backgroundImage;
+    public String backgroundImageUrl;
+
+    public List<Question> questions = new ArrayList<>();
+
+    public List<Map<String, String>> mixAndMatch;
+
+    public Object interactive;
 }
