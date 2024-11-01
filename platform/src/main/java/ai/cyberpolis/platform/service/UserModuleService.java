@@ -21,6 +21,7 @@ import java.util.*;
 
 @Service
 public class UserModuleService {
+    @Autowired
     private UserModuleRepository userModuleRepository;
 
     private final ModuleService moduleService;

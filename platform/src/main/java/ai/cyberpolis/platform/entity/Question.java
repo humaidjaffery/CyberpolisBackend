@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 public class Question {
-    private String question;
-    private List<String> choices;
-    private String answer;
-    private String explanation;
+    public String question;
+    public List<String> choices;
+    public String answer;
+    public String explanation;
 }

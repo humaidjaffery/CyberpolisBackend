@@ -15,7 +15,7 @@ import java.util.Objects;
 @Document(collection = "Topic")
 public class Topic {
     @Id
-    private int topicId;
+    public int topicId;
 
-    private int topicName;
+    public int topicName;
 }
