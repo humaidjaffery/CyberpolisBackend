@@ -12,8 +12,11 @@ import java.util.UUID;
 @Service
 public class CourseService {
 
-    @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
+
+    public CourseService(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
     public List<Course> getCoursesService(){
         return courseRepository.findAll();

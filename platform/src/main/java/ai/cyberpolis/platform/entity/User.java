@@ -18,13 +18,13 @@ import java.util.Collection;
 @Document(collection = "user")
 public class User implements UserDetails {
     @Id
-    public String email;
+    private String email;
 
-    public String displayName;
+    private String displayName;
 
-    public String password;
+    private String password;
 
-    public Integer currency;
+    private Integer currency;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

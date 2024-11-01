@@ -16,13 +16,13 @@ import java.util.Objects;
 public class StoryPage {
 
     @Id
-    public long storyPageId;
+    private long storyPageId;
 
-    public String text;
+    private String text;
 
-    public byte[] image;
+    private byte[] image;
 
-    public long nextStoryPageId;
+    private long nextStoryPageId;
 
 
 }

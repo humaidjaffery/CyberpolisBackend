@@ -20,14 +20,19 @@ import java.util.UUID;
 @Service
 public class ModuleService {
     @Autowired
-    private ModuleRepository moduleRepository;
+    private final ModuleRepository moduleRepository;
 
     @Autowired
-    private CourseService courseService;
+    private final CourseService courseService;
 
-    @Autowired
     @Lazy
-    private  UserModuleService userModuleService;
+    private final UserModuleService userModuleService;
+
+    public ModuleService(ModuleRepository moduleRepository, CourseService courseService, UserModuleService userModuleService) {
+        this.moduleRepository = moduleRepository;
+        this.courseService = courseService;
+        this.userModuleService = userModuleService;
+    }
 
     public Module addModule(Module module, String courseId) throws Exception {
         //TODO: add image to s3

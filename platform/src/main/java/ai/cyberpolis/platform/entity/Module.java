@@ -17,31 +17,31 @@ import java.util.Map;
 @Document(collection = "module")
 public class Module {
     @Id
-    public String id;
+    private String id;
 
-    public String previousModule;
+    private String previousModule;
 
-    public String nextModule;
+    private String nextModule;
 
-    public String moduleName;
+    private String moduleName;
 
-    public String moduleContent;
+    private String moduleContent;
 
-    public List<String> hiddenModuleCode;
+    private List<String> hiddenModuleCode;
 
-    public List<String> initialModuleCode;
+    private List<String> initialModuleCode;
 
-    public List<String> moduleCodeSolution = new ArrayList<>();
+    private List<String> moduleCodeSolution = new ArrayList<>();
 
-    public List<String> blocks = new ArrayList<>();
+    private List<String> blocks = new ArrayList<>();
 
-    public List<List<Object>> moduleTests;
+    private List<List<Object>> moduleTests;
 
-    public String backgroundImageUrl;
+    private String backgroundImageUrl;
 
-    public List<Question> questions = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
 
-    public List<List<String>> mixAndMatch;
+    private List<List<String>> mixAndMatch;
 
-    public String interactiveType;
+    private String interactiveType;
 }

@@ -19,18 +19,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    @Autowired
-    JwtUtils jwtService;
-
-    @Autowired
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtils jwtService;
     private AuthenticationManager authenticationManager;
+
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtils jwtService) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+    }
+
     public ResponseEntity<String> signup(RegisterRequest registerRequest){
         System.out.println(registerRequest);
         if(registerRequest.getEmail() == null || registerRequest.getDisplayName() == null || registerRequest.getPassword() == null){

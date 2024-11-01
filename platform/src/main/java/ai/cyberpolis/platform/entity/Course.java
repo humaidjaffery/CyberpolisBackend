@@ -17,9 +17,9 @@ import java.util.UUID;
 public class Course {
 
     @Id
-    public String courseId;
+    private String courseId;
 
-    public String courseName;
+    private String courseName;
 
-    public String color;
+    private String color;
 }

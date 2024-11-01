@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/chat")
 public class ChatController {
 
-    private final AuthService authService;
     private final ChatService chatService;
 
     public ChatController(AuthService authService, ChatService chatService) {
-        this.authService = authService;
         this.chatService = chatService;
     }
 

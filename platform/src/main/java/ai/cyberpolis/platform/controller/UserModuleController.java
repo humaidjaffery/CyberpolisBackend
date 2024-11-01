@@ -18,8 +18,11 @@ import java.util.List;
 @RequestMapping("/userModule")
 public class UserModuleController {
 
-    @Autowired
-    private UserModuleService userModuleService;
+    private final UserModuleService userModuleService;
+
+    public UserModuleController(UserModuleService userModuleService) {
+        this.userModuleService = userModuleService;
+    }
 
     @GetMapping("/getAll/{userEmail}")
     public List<UserModuleRelation> getAllUserModuleInformation(@PathVariable String userEmail){
