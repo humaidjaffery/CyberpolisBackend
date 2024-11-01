@@ -16,8 +16,7 @@ import java.util.List;
 public class UserChatMessage {
     private String prompt;
     private String reply;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
-    private Date time;
-    private List<String> highlights = new ArrayList<>();
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone = "UTC")
+    private Date date;
     private int tokens;
 }

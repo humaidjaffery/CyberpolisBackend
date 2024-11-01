@@ -1,8 +1,10 @@
 package ai.cyberpolis.platform.controller;
 
-import ai.cyberpolis.platform.model.ChatMessageRequest;
+import ai.cyberpolis.platform.entity.User;
+import ai.cyberpolis.platform.entity.UserChatMessage;
 import ai.cyberpolis.platform.service.AuthService;
 import ai.cyberpolis.platform.service.ChatService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +21,9 @@ public class ChatController {
     }
 
     @PostMapping("/newMessage/{moduleId}")
-    public String newChatMessage(@PathVariable String moduleId, @RequestBody ChatMessageRequest chatMessageRequest) throws Exception {
-        return chatService.newMessage(moduleId, chatMessageRequest);
+    public UserChatMessage newChatMessage(@PathVariable String moduleId, @RequestBody String prompt) throws Exception {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return chatService.newMessage(moduleId, prompt, user);
     }
 
 

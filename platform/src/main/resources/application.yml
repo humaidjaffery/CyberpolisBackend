@@ -4,9 +4,17 @@ spring:
       uri: mongodb+srv://humaidjaffery:Billybobjoe2152%40@cyberpolis.bzc0s.mongodb.net/cyberpolis
       database: cyberpolis
   app:
-    jwtSecret: testSecretKeymyverylongkyemyverylongkeymyvery
+    jwtSecret: ${JWT_SECRET}
     jwtExpirationMs: 60480000
 
 logging:
   level:
     org.springframework: DEBUG
+
+openai:
+  model: gpt-3.5-turbo
+  api-key: ${OPENAI_API_KEY}
+
+server:
+  port: 5000
+

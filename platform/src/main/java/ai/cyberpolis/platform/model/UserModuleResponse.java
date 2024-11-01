@@ -1,10 +1,11 @@
-package ai.cyberpolis.platform.entity;
+package ai.cyberpolis.platform.model;
 
+import ai.cyberpolis.platform.entity.UserChatMessage;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +13,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "user_module")
-public class UserModuleRelation {
-    @Id
-    private String id;
-    private String userEmail;
-    private String moduleId;
+@Builder
+public class UserModuleResponse {
     private List<String> moduleUserCode;
     private ArrayList<Boolean> testsPassed;
     private Boolean completed;
     private List<UserChatMessage> messageHistory = new ArrayList<>();
     private ArrayList<Boolean> questionsCorrect;
+    private int currency;
 }

@@ -1,33 +1,31 @@
-package ai.cyberpolis.platform.entity;
+package ai.cyberpolis.platform.model;
 
-
-import lombok.*;
+import ai.cyberpolis.platform.entity.Course;
+import ai.cyberpolis.platform.entity.Question;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
-@Getter
-@Setter
-@ToString
 @Data
-@Document(collection = "module")
-public class Module {
-    @Id
-    public String id;
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ModuleResponse {
+    public Course course;
+
+    public String moduleName;
 
     public String previousModule;
 
     public String nextModule;
 
-    public String moduleName;
-
     public String moduleContent;
-
-    public List<String> hiddenModuleCode;
 
     public List<String> initialModuleCode;
 
@@ -43,5 +41,5 @@ public class Module {
 
     public List<List<String>> mixAndMatch;
 
-    public String interactiveType;
+    public String interactive;
 }

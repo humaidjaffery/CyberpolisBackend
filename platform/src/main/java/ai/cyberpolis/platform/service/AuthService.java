@@ -49,6 +49,7 @@ public class AuthService {
                 .displayName(registerRequest.getDisplayName())
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
+                .currency(10000)
                 .build();
         User user = userRepository.save(u);
 
@@ -73,5 +74,20 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return ResponseEntity.ok(jwtService.generateJwtTokenFromEmail(userDetails)) ;
+    }
+
+    public void subtractTokens(User user, Integer cost){
+        user.setCurrency(Math.max(0, user.getCurrency() - cost));
+        userRepository.save(user);
+    }
+
+    public int getTokens(String userEmail) throws Exception {
+        return userRepository.findByEmail(userEmail).orElseThrow(Exception::new).getCurrency();
+    }
+
+    public int addTokens(User user, int tokens) throws Exception {
+        user.setCurrency(user.getCurrency() + tokens);
+        userRepository.save(user);
+        return user.getCurrency();
     }
 }

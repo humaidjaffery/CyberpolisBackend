@@ -3,6 +3,7 @@ package ai.cyberpolis.platform.controller;
 import ai.cyberpolis.platform.entity.Module;
 import ai.cyberpolis.platform.entity.User;
 import ai.cyberpolis.platform.model.CourseModuleListResponse;
+import ai.cyberpolis.platform.model.ModuleResponse;
 import ai.cyberpolis.platform.service.ModuleService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class ModuleController {
 
 
     @GetMapping("/get/{moduleId}")
-    public Module getModule(@PathVariable String moduleId) throws Exception {
-        return moduleService.getModule(moduleId);
+    public ModuleResponse getModule(@PathVariable String moduleId) throws Exception {
+        return moduleService.getModuleResponse(moduleId);
     }
 
     @GetMapping("/getAllFromCourse/{courseId}")

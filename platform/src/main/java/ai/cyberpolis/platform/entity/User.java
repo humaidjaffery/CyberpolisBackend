@@ -24,6 +24,8 @@ public class User implements UserDetails {
 
     public String password;
 
+    public Integer currency;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

@@ -28,10 +28,10 @@ public class CourseService {
         }
     }
 
-    public Course addCourseService(String name){
-        String courseId = UUID.randomUUID().toString().substring(0, 4);
-        Course course = new Course(courseId, name);
-        return courseRepository.save(course);
-    }
+//    public Course addCourseService(String name){
+//        String courseId = UUID.randomUUID().toString().substring(0, 4);
+//        Course course = new Course(courseId, name);
+//        return courseRepository.save(course);
+//    }
 
 }
