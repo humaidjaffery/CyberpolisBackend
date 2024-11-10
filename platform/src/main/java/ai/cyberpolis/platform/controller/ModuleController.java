@@ -43,9 +43,4 @@ public class ModuleController {
         return moduleService.getAllModulesFromCourse(courseId, user.getEmail());
     }
 
-//    @PutMapping("/updateCode/{courseName}/{moduleName}")
-//    public Module updateCode(@PathVariable String courseName, String moduleName, @RequestBody String updatedCode) throws Exception {
-//        return moduleService.updateCode(courseName, moduleName, updatedCode);
-//    }
-
 }

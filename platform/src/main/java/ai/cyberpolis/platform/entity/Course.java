@@ -15,11 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @Document(collection = "course")
 public class Course {
-
     @Id
     public String courseId;
 
     public String courseName;
 
     public String color;
+
+    public String explanation;
 }

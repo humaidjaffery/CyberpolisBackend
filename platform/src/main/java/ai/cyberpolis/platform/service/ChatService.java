@@ -22,9 +22,6 @@ import java.util.*;
 
 @Service
 public class ChatService {
-
-    private final ModuleService moduleService;
-
     private final AuthService authService;
 
     private final UserModuleService userModuleService;
@@ -36,8 +33,7 @@ public class ChatService {
     @Value("${openai.model}")
     private String openai_api_model;
 
-    public ChatService(ModuleService moduleService, AuthService authService, UserModuleService userModuleService, UserModuleRepository userModuleRepository) {
-        this.moduleService = moduleService;
+    public ChatService(AuthService authService, UserModuleService userModuleService, UserModuleRepository userModuleRepository) {
         this.authService = authService;
         this.userModuleService = userModuleService;
         this.userModuleRepository = userModuleRepository;

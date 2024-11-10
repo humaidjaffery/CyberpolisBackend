@@ -6,8 +6,6 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @ToString
@@ -20,9 +18,9 @@ public class StoryPage {
 
     public String text;
 
-    public byte[] image;
+    public String imageUrl;
 
-    public long nextStoryPageId;
+    public long next;
 
 
 }

@@ -13,10 +13,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://www.cyberpolisai.com")
 @RequestMapping("/auth")
-public class
-AuthController {
+public class AuthController {
     @Autowired
     private AuthService authService;
 
@@ -39,4 +38,10 @@ AuthController {
         }
         return ResponseEntity.ok(user);
     }
+
+    @PostMapping("/guest")
+    public ResponseEntity<String> betaGuestUser(){
+        return authService.newGuestUser();
+    }
+
 }

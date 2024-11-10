@@ -60,7 +60,6 @@ public class ModuleService {
                 .moduleCodeSolution(module.getModuleCodeSolution())
                 .blocks(module.getBlocks())
                 .moduleTests(module.getModuleTests())
-                .backgroundImageUrl(module.getBackgroundImageUrl())
                 .questions(module.getQuestions())
                 .mixAndMatch(module.getMixAndMatch())
                 .interactive(module.getInteractiveType())
@@ -76,7 +75,9 @@ public class ModuleService {
                     module.getModuleName(),
                     module.getId(),
                     userModuleRelStatus > 0,
-                    userModuleRelStatus > 1
+                    userModuleRelStatus > 1,
+                    module.getPrevious(),
+                    module.getNext()
             );
             courseModuleList.add(courseModuleListResponse);
         }

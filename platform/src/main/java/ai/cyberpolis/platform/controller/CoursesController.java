@@ -1,8 +1,10 @@
 package ai.cyberpolis.platform.controller;
 
 import ai.cyberpolis.platform.entity.Course;
+import ai.cyberpolis.platform.entity.User;
 import ai.cyberpolis.platform.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,5 +31,7 @@ public class CoursesController {
 //    public Course addCourse(@RequestBody String courseName){
 //        return courseService.addCourseService(courseName);
 //    }
+
+
 
 }

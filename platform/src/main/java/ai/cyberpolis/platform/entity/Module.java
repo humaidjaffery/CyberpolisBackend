@@ -19,9 +19,9 @@ public class Module {
     @Id
     public String id;
 
-    public String previousModule;
+    public String previous;
 
-    public String nextModule;
+    public String next;
 
     public String moduleName;
 
@@ -36,8 +36,6 @@ public class Module {
     public List<String> blocks = new ArrayList<>();
 
     public List<List<Object>> moduleTests;
-
-    public String backgroundImageUrl;
 
     public List<Question> questions = new ArrayList<>();
 

@@ -17,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class AuthService {
 
@@ -31,6 +33,7 @@ public class AuthService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
     public ResponseEntity<String> signup(RegisterRequest registerRequest){
         System.out.println(registerRequest);
         if(registerRequest.getEmail() == null || registerRequest.getDisplayName() == null || registerRequest.getPassword() == null){
@@ -52,6 +55,21 @@ public class AuthService {
                 .currency(10000)
                 .build();
         User user = userRepository.save(u);
+
+        return ResponseEntity.ok(jwtService.generateJwtTokenFromEmail(user));
+    }
+
+    public ResponseEntity<String> newGuestUser(){
+        String email = UUID.randomUUID().toString().substring(0, 4) + "@gmail.com";
+
+        User u = User.builder()
+                .displayName("Anonymous")
+                .email(email)
+                .password(passwordEncoder.encode(UUID.randomUUID().toString().substring(0, 4)))
+                .currency(20000)
+                .build();
+        User user = userRepository.save(u);
+        System.out.println(user);
 
         return ResponseEntity.ok(jwtService.generateJwtTokenFromEmail(user));
     }
