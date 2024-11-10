@@ -6,8 +6,6 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @ToString
@@ -16,13 +14,13 @@ import java.util.Objects;
 public class StoryPage {
 
     @Id
-    private long storyPageId;
+    public long storyPageId;
 
-    private String text;
+    public String text;
 
-    private byte[] image;
+    public String imageUrl;
 
-    private long nextStoryPageId;
+    public long next;
 
 
 }

@@ -21,6 +21,7 @@ import java.util.*;
 
 @Service
 public class UserModuleService {
+    @Autowired
     private UserModuleRepository userModuleRepository;
 
     private final ModuleService moduleService;
@@ -202,5 +203,6 @@ public class UserModuleService {
     public void updateUserModuleRelation(UserModuleRelation userModuleRelation) throws Exception {
         userModuleRepository.save(userModuleRelation);
     }
+
 
 }

@@ -11,4 +11,6 @@ public class CourseModuleListResponse {
     public String moduleId;
     public Boolean hasStarted;
     public Boolean hasCompleted;
+    public String previous;
+    public String next;
 }
