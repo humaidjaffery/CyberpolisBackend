@@ -4,7 +4,7 @@ spring:
       uri: mongodb+srv://humaidjaffery:Billybobjoe2152%40@cyberpolis.bzc0s.mongodb.net/cyberpolis
       database: cyberpolis
   app:
-    jwtSecret: ${JWT_SECRET}
+    jwtSecret: e9c024214fc8aebea41227c05d43cab21a2afc71d652c22362f5af14651768bd9310731bf492014f591f7ffe533107e77645d657f563c7e1d5a2dd12ca5e5fda184f0d5dd36805cc2c15f224fdeb08e974d935401c7a640432e05ca49d6b84f5bae3d6be63ee61001f599cd0065992d561f2c8151f7289b89287272b5a1b28e68030c4a2d0b259e3fd2aef402b9ec228d55f36bfe0cafbae5429637305ea17d37b2f4cabc0b976c859bc668be0b5683e15f92e9d05ca40caf205b937a1b830bbeb43d1356832bfc1cb82edd2e92a81cc9e96d458f87376ef70fda6fec6deef69190d54ed5758f754b80edff18e86139032edd45d1db5dc0cfa968cba48bc42bd
     jwtExpirationMs: 60480000
 
 logging:
